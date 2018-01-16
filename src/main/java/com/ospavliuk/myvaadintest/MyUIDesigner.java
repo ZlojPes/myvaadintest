@@ -25,6 +25,18 @@ public class MyUIDesigner extends VerticalLayout {
     protected HorizontalLayout horizontalLayout;
     protected TextArea textArea;
     protected Button _1;
+    protected Button _2;
+    protected Button _3;
+    protected Button _4;
+    protected Button _5;
+    protected Button _6;
+    protected Button _7;
+    protected Button _8;
+    protected Button _9;
+    protected Button back;
+    protected Button _0;
+    protected Button enter;
+    protected Button startButton;
 
     public MyUIDesigner() {
         Design.read(this);

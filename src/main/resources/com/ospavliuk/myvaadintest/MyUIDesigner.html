@@ -6,15 +6,21 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
+  <vaadin-vertical-layout height="516px">
    <vaadin-label caption-as-html style-name="h1" width="325px" height="29px" plain-text _id="label" :center :expand>
      Guess The Number! 
    </vaadin-label>
    <vaadin-horizontal-layout _id="horizontalLayout">
-    <vaadin-text-area width="216px" height="334px" readonly _id="textArea" :center></vaadin-text-area>
-    <vaadin-vertical-layout size-auto :center>
-     <vaadin-text-field caption-as-html caption="Enter your number:" description="You should input 4 different digits here" :middle :right></vaadin-text-field>
-     <vaadin-grid-layout width="288px" height="178px">
+    <vaadin-horizontal-layout height="307px" :middle :center>
+     <vaadin-text-area caption="You" width="96px" height="282px" readonly _id="youArea" :center></vaadin-text-area>
+     <vaadin-text-area caption="Robot" width="96px" height="282px" readonly _id="robotArea" :center></vaadin-text-area>
+    </vaadin-horizontal-layout>
+    <vaadin-vertical-layout width="363px" :bottom :center>
+     <vaadin-horizontal-layout :center>
+      <vaadin-text-field caption-as-html caption="Enter your number:" description="You should input 4 different digits here" width="137px" _id="numberField" :middle :center></vaadin-text-field>
+      <vaadin-text-field caption="Enter the score:" enabled="false" width="137px" _id="scoreField" :middle :center></vaadin-text-field>
+     </vaadin-horizontal-layout>
+     <vaadin-grid-layout width="288px" height="174px">
       <row>
        <column expand="1">
         <vaadin-button width-full plain-text _id="_1">
@@ -84,14 +90,20 @@
        </column>
       </row>
      </vaadin-grid-layout>
-     <vaadin-button width="287px" _id="startButton" :middle :right>
+     <vaadin-button width="287px" height="48px" _id="startButton" :bottom :center>
        Start game 
      </vaadin-button>
     </vaadin-vertical-layout>
-    <vaadin-combo-box caption="Game:" empty-selection-allowed="false" tabindex="1" data-item-type="java.lang.String">
-     <option item="Option1">versus the robot</option>
-     <option item="Option2">guest only</option>
-    </vaadin-combo-box>
+    <vaadin-form-layout size-auto :center>
+     <vaadin-combo-box caption="Game:" empty-selection-allowed="false" placeholder="" text-input-allowed="false" data-item-type="java.lang.String" _id="gameCombo">
+      <option item="Option1" selected>versus the robot</option>
+      <option item="Option2">guess only</option>
+     </vaadin-combo-box>
+     <vaadin-combo-box caption="Number(s):" empty-selection-allowed="false" text-input-allowed="false" data-item-type="java.lang.String" _id="numberCombo">
+      <option item="Option1" selected>different numbers</option>
+      <option item="Option2">the same for both</option>
+     </vaadin-combo-box>
+    </vaadin-form-layout>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>

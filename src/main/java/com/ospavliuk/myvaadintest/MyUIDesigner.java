@@ -49,8 +49,8 @@ public class MyUIDesigner extends VerticalLayout {
     protected Button enter;
     protected Button startButton;
     protected FormLayout settingsLayout;
-    protected ComboBox<java.lang.String> gameCombo;
-    protected ComboBox<java.lang.String> numberCombo;
+    protected ComboBox<String> gameCombo;
+    protected ComboBox<String> numberCombo;
 
     public MyUIDesigner() {
         Design.read(this);

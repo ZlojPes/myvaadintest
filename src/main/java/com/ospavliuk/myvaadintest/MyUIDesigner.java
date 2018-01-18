@@ -51,6 +51,8 @@ public class MyUIDesigner extends VerticalLayout {
     protected FormLayout settingsLayout;
     protected ComboBox<String> gameCombo;
     protected ComboBox<String> numberCombo;
+    protected TextField overallScore;
+    protected TextArea infoAreaa;
 
     public MyUIDesigner() {
         Design.read(this);

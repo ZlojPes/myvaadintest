@@ -94,7 +94,7 @@
        Start game 
      </vaadin-button>
     </vaadin-vertical-layout>
-    <vaadin-form-layout caption="Settings" description="Settings" width-auto height="131px" margin-right margin-top="false" _id="settingsLayout">
+    <vaadin-form-layout caption="Settings" width-auto height="131px" margin-right margin-top="false" _id="settingsLayout">
      <vaadin-combo-box caption="Game:" empty-selection-allowed="false" placeholder="" text-input-allowed="false" data-item-type="java.lang.String" _id="gameCombo">
       <option item="Option1" selected>versus the robot</option>
       <option item="Option2">guess only</option>
@@ -103,6 +103,8 @@
       <option item="Option1" selected>different numbers</option>
       <option item="Option2">the same for both</option>
      </vaadin-combo-box>
+     <vaadin-text-field caption="Overall score:" readonly _id="overallScore"></vaadin-text-field>
+     <vaadin-text-area caption="Information" height="161px" readonly _id="infoAreaa"></vaadin-text-area>
     </vaadin-form-layout>
    </vaadin-horizontal-layout>
   </vaadin-vertical-layout>

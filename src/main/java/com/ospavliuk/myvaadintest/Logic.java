@@ -8,7 +8,12 @@ import java.util.regex.Pattern;
 
 
 public class Logic extends MyUIDesigner {
+
     public Logic() {
+        initComponents();
+    }
+
+    private void initComponents(){
         _1.addClickListener(new ButtonListener());
         _2.addClickListener(new ButtonListener());
         _3.addClickListener(new ButtonListener());
@@ -51,6 +56,9 @@ public class Logic extends MyUIDesigner {
             numberField.setValue(sb.toString());
             enter.setEnabled(sb.length() == 4);
             back.setEnabled(sb.length() > 0);
+        });
+        gameCombo.addValueChangeListener(listener ->{
+            numberCombo.setEnabled(gameCombo.getValue().equals("Option1"));
         });
     }
 

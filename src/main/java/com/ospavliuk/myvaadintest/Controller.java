@@ -3,16 +3,18 @@ package com.ospavliuk.myvaadintest;
 import com.vaadin.ui.Button;
 import com.vaadin.event.ShortcutAction.KeyCode;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class Controller extends MyUIDesigner {
+    private static ArrayList<Controller> list = new ArrayList<>();
 
     public Controller() {
+        list.add(this);
         initComponents();
     }
-
     private void initComponents() {
         _1.addClickListener(new ButtonListener());
         _2.addClickListener(new ButtonListener());
@@ -61,14 +63,31 @@ public class Controller extends MyUIDesigner {
             numberCombo.setEnabled(gameCombo.getValue().equals("Option1"));
         });
         startButton.addClickListener(clickEvent -> {
-            if(startButton.getCaption().equals("Start game")){
+            if (startButton.getCaption().equals("Start game")) {
                 startButton.setCaption("Stop game");
                 startGame();
-            }else {
+            } else {
                 startButton.setCaption("Start game");
                 stopGame();
             }
+            testMessage();
         });
+    }
+
+    private void testMessage() {
+        for (Controller c : list) {
+            if (c != this) {
+                c.getMessage("Hello!");
+//                c.infoArea.focus();
+            }
+        }
+    }
+
+    private void getMessage(String message) {
+        System.out.println("message received");
+        infoArea.setValue(infoArea.getValue() + message + "\n");
+        System.out.println("after printing");
+//        infoArea.focus();
     }
 
     private void stopGame() {

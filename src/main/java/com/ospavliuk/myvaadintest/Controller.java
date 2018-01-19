@@ -7,13 +7,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Logic extends MyUIDesigner {
+public class Controller extends MyUIDesigner {
 
-    public Logic() {
+    public Controller() {
         initComponents();
     }
 
-    private void initComponents(){
+    private void initComponents() {
         _1.addClickListener(new ButtonListener());
         _2.addClickListener(new ButtonListener());
         _3.addClickListener(new ButtonListener());
@@ -33,7 +33,7 @@ public class Logic extends MyUIDesigner {
         enter.addClickListener(click -> {
             String num = numberField.getValue();
             if (num.length() == 4) {
-                youArea.setValue(youArea.getValue() + num + "\n");
+                yourArea.setValue(yourArea.getValue() + num + "  4:4\n");
                 numberField.clear();
             }
         });
@@ -57,16 +57,33 @@ public class Logic extends MyUIDesigner {
             enter.setEnabled(sb.length() == 4);
             back.setEnabled(sb.length() > 0);
         });
-        gameCombo.addValueChangeListener(listener ->{
+        gameCombo.addValueChangeListener(valueChangeEvent -> {
             numberCombo.setEnabled(gameCombo.getValue().equals("Option1"));
         });
+        startButton.addClickListener(clickEvent -> {
+            if(startButton.getCaption().equals("Start game")){
+                startButton.setCaption("Stop game");
+                startGame();
+            }else {
+                startButton.setCaption("Start game");
+                stopGame();
+            }
+        });
+    }
+
+    private void stopGame() {
+
+    }
+
+    private void startGame() {
+
     }
 
     class ButtonListener implements Button.ClickListener {
         @Override
         public void buttonClick(Button.ClickEvent click) {
             numberField.setValue(numberField.getValue() + click.getButton().getCaption());
-            numberField.focus();
+//            numberField.focus();
         }
     }
 }

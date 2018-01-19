@@ -27,8 +27,8 @@ import com.vaadin.ui.FormLayout;
 public class MyUIDesigner extends VerticalLayout {
     protected Label label;
     protected HorizontalLayout horizontalLayout;
-    protected HorizontalLayout gameProgress;
-    protected TextArea youArea;
+    protected HorizontalLayout gameProgres;
+    protected TextArea yourArea;
     protected TextArea robotArea;
     protected VerticalLayout controlPanel;
     protected HorizontalLayout inputLayout;
@@ -52,7 +52,7 @@ public class MyUIDesigner extends VerticalLayout {
     protected ComboBox<String> gameCombo;
     protected ComboBox<String> numberCombo;
     protected TextField overallScore;
-    protected TextArea infoAreaa;
+    protected TextArea infoArea;
 
     public MyUIDesigner() {
         Design.read(this);

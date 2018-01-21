@@ -28,7 +28,7 @@ public class MyUIDesigner extends VerticalLayout {
     protected Label label;
     protected HorizontalLayout horizontalLayout;
     protected HorizontalLayout gameProgres;
-    protected TextArea yourArea;
+    protected TextArea userArea;
     protected TextArea robotArea;
     protected VerticalLayout controlPanel;
     protected HorizontalLayout inputLayout;

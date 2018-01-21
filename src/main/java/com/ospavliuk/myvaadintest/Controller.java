@@ -144,7 +144,11 @@ public class Controller extends MyUIDesigner {
 
     private void stopGame() {
         startButton.setCaption("Start game");
-        gameStarted = false;
+        gameStarted = false;gameCombo.setEnabled(!gameStarted);
+        numberCombo.setEnabled(!gameStarted);
+        keyboardLayout.setEnabled(gameStarted);
+        twoPlayers = gameCombo.getValue().equals("Option1");
+        scoreNeeded = gameCombo.getValue().equals("Option1") && numberCombo.getValue().equals("Option1");
 
     }
 

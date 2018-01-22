@@ -89,6 +89,6 @@ public class ModelImpl implements Model {
     }
 
     public void userForfeit() {
-        userGlobalScore++;
+        robotGlobalScore++;
     }
 }

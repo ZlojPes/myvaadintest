@@ -9,5 +9,11 @@ public interface Model {
 
     int[] getRobotsMove() throws WrongScoreException;
 
-    int[] processScore(int[] score);
+    int[] processRobotScore(int[] score) throws WrongScoreException;
+
+    int[] getGlobalScore();
+
+    Result checkWinners();
+
+    void userForfeit();
 }

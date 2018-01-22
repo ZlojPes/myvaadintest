@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ArtInt {
     private static final int[][] LEGAL_COMBINATIONS = new int[5040][];
-    private final ArrayList<int[]> prevMoves = new java.util.ArrayList<>();
+    private final ArrayList<int[]> prevMoves = new ArrayList<>();
 
     static {
         int counter = 0;
@@ -53,7 +53,7 @@ public class ArtInt {
         prevMoves.add(a);
     }
 
-    public ArrayList<int[]> getPrevMoves() {
+    public ArrayList<int[]> getMovesList() {
         return prevMoves;
     }
 }

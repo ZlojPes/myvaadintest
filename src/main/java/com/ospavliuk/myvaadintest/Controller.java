@@ -18,10 +18,10 @@ public class Controller extends MyUIDesigner {
     private Model model;
     private TextField currentInputField;
 
-
-    public Controller() {
+    Controller() {
         model = new ModelImpl(this);
         counter++;
+        System.out.println(counter);
         initComponents();
     }
 
@@ -46,39 +46,43 @@ public class Controller extends MyUIDesigner {
 
         enter.addClickListener(click -> {
             String num = isRobotMove ? scoreField.getValue() : numberField.getValue();
-            if (isRobotMove) {
-                char[] scoreInput = scoreField.getValue().toCharArray();
-                print(model.processScore(new int[]{scoreInput[0] - 48, scoreInput[4] - 48}));
-                scoreField.setEnabled(false);
-                numberField.setEnabled(true);
-                scoreField.clear();
-                currentInputField = numberField;
-                numberField.focus();
-                isRobotMove = false;
-            } else {
-                print(model.processUserMove(num));
-                if (twoPlayers) {
-                    isRobotMove = true;
-                    if (scoreNeeded) {
-                        scoreField.setEnabled(true);
-                        numberField.setEnabled(false);
-                        numberField.clear();
-                        currentInputField = scoreField;
-                        scoreField.focus();
-                    }
-                    try {
+            try {
+                if (isRobotMove) {
+                    char[] scoreInput = scoreField.getValue().toCharArray();
+                    print(model.processRobotScore(new int[]{scoreInput[0] - 48, scoreInput[4] - 48}));
+                    scoreField.setEnabled(false);
+                    numberField.setEnabled(true);
+                    scoreField.clear();
+                    currentInputField = numberField;
+                    numberField.focus();
+                    isRobotMove = false;
+                } else {
+                    print(model.processUserMove(num));
+                    numberField.clear();
+                    if (twoPlayers) {
+                        isRobotMove = true;
+                        if (scoreNeeded) {
+                            scoreField.setEnabled(true);
+                            numberField.setEnabled(false);
+                            currentInputField = scoreField;
+                            scoreField.focus();
+                        }
                         print(model.getRobotsMove());
-                    } catch (WrongScoreException e) {
-                        infoArea.setValue("You've provided wrong score at least one time during this game. You lose.");
-                        model.stop();
-                        stopGame();
-                    }
-                    if (!scoreNeeded) {
-                        print(model.processScore(new int[]{-1}));
-                        isRobotMove = false;
-                        numberField.clear();
+                        if (!scoreNeeded) {
+                            print(model.processRobotScore(new int[]{-1}));
+                            isRobotMove = false;
+                        }
                     }
                 }
+            } catch (WrongScoreException e) {
+                infoArea.setValue("You've provided wrong score at least one time during this game. You lose.");
+                int[] score = model.getGlobalScore();
+                score[1]++;
+                setGlobalScore(score);
+                model.userForfeit();
+            }
+            if (!isRobotMove) {
+                checkWinners();
             }
         });
 
@@ -125,17 +129,40 @@ public class Controller extends MyUIDesigner {
         gameCombo.addValueChangeListener(changeEvent -> {
             boolean isEnabled = gameCombo.getValue().equals("Option1");
             numberCombo.setEnabled(isEnabled);
-            robotArea.setEnabled(isEnabled);
         });
 
         startButton.addClickListener(clickEvent -> {
             if (gameStarted) {
                 infoArea.setValue(infoArea.getValue() + "Game interrupted" + "\n");
-                stopGame();
+                int[] score = model.getGlobalScore();
+                score[1]++;
+                setGlobalScore(score);
+                model.userForfeit();
             } else {
                 startGame();
             }
         });
+    }
+
+    private void checkWinners() {
+        switch (model.checkWinners()) {
+            case IN_A_DRAW:
+                infoArea.setValue("You played in a draw!\nGood result!");
+                setGlobalScore(model.getGlobalScore());
+                break;
+            case USER_WINS:
+                infoArea.setValue("Congratulations!\nYou win!!!!");
+                setGlobalScore(model.getGlobalScore());
+                break;
+            case ROBOT_WINS:
+                infoArea.setValue("Unfortunately, you lose :( Try again and good luck!");
+                setGlobalScore(model.getGlobalScore());
+        }
+    }
+
+    private void setGlobalScore(int[] score) {
+        stopGame();
+        overallScore.setValue(score[0] + " : " + score[1]);
     }
 
     private void stopGame() {
@@ -161,7 +188,7 @@ public class Controller extends MyUIDesigner {
         generalStartStopActions();
     }
 
-    private void generalStartStopActions(){
+    private void generalStartStopActions() {
         gameCombo.setEnabled(!gameStarted);
         numberCombo.setEnabled(!gameStarted);
         keyboardLayout.setEnabled(gameStarted);

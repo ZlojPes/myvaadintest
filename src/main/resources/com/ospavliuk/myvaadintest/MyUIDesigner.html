@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:13,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
@@ -10,14 +10,14 @@
    <vaadin-label caption-as-html style-name="h1 colored" width="409px" height="46px" plain-text _id="label" :middle :center :expand>
      Guess The Number! 
    </vaadin-label>
-   <vaadin-horizontal-layout height="450px" _id="horizontalLayout">
+   <vaadin-horizontal-layout height="448px" _id="horizontalLayout">
     <vaadin-vertical-layout size-auto margin-right="false">
      <vaadin-label style-name="h3" plain-text :middle :center>
        Game progress: 
      </vaadin-label>
      <vaadin-horizontal-layout width="231px" height="307px" _id="gameProgres">
-      <vaadin-text-area caption="You" width="96px" height="286px" readonly _id="userArea" :center></vaadin-text-area>
-      <vaadin-text-area caption="Robot" width="96px" height="286px" readonly _id="robotArea"></vaadin-text-area>
+      <vaadin-text-area caption="You" width="96px" height="283px" readonly _id="userArea" :center></vaadin-text-area>
+      <vaadin-text-area caption="Robot" width="96px" height="283px" readonly _id="robotArea"></vaadin-text-area>
      </vaadin-horizontal-layout>
     </vaadin-vertical-layout>
     <vaadin-vertical-layout width="304px" margin-left="false" margin-top="false" _id="controlPanel" :bottom :center>
@@ -25,8 +25,8 @@
        Control panel 
      </vaadin-label>
      <vaadin-horizontal-layout _id="inputLayout" :center>
-      <vaadin-text-field caption-as-html caption="Enter your number:" description="You should input 4 different digits here" style-name="align-center" width="137px" _id="numberField" :middle :center></vaadin-text-field>
-      <vaadin-text-field caption="Enter the score:" enabled="false" style-name="align-center" width="137px" _id="scoreField" :middle :center></vaadin-text-field>
+      <vaadin-text-field caption-as-html caption="Enter your number:" description="You should input 4 different digits here" enabled="false" style-name="align-center" width="138px" _id="numberField" :middle></vaadin-text-field>
+      <vaadin-text-field caption="Enter the score:" enabled="false" style-name="align-center" width="138px" _id="scoreField" :middle :right></vaadin-text-field>
      </vaadin-horizontal-layout>
      <vaadin-grid-layout enabled="false" width="288px" height="174px" _id="keyboardLayout" :middle :center>
       <row>
@@ -106,7 +106,7 @@
      <vaadin-label style-name="h3" width="101px" height="24px" plain-text :middle :center>
        Settings 
      </vaadin-label>
-     <vaadin-form-layout width-auto height="307px" margin-right margin-top="false" _id="settingsLayout" :middle :center>
+     <vaadin-form-layout width-auto height="327px" margin-right margin-top="false" _id="settingsLayout" :middle :center>
       <vaadin-combo-box caption="Game:" empty-selection-allowed="false" placeholder="" text-input-allowed="false" data-item-type="java.lang.String" _id="gameCombo">
        <option item="Option1" selected>versus the robot</option>
        <option item="Option2">guess only</option>
@@ -116,7 +116,7 @@
        <option item="Option2">the same for both</option>
       </vaadin-combo-box>
       <vaadin-text-field caption="Total score:" style-name="align-center" width="88px" readonly value="888 : 888" _id="overallScore"></vaadin-text-field>
-      <vaadin-text-area caption="Information" value-change-mode="blur" placeholder="" height="168px" readonly _id="infoArea"></vaadin-text-area>
+      <vaadin-text-area caption="Information" value-change-mode="blur" placeholder="" height="169px" readonly _id="infoArea"></vaadin-text-area>
      </vaadin-form-layout>
     </vaadin-vertical-layout>
    </vaadin-horizontal-layout>

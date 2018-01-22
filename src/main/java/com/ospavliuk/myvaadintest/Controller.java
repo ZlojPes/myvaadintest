@@ -76,6 +76,7 @@ public class Controller extends MyUIDesigner {
                     if (!scoreNeeded) {
                         print(model.processScore(new int[]{-1}));
                         isRobotMove = false;
+                        numberField.clear();
                     }
                 }
             }
@@ -134,37 +135,38 @@ public class Controller extends MyUIDesigner {
             } else {
                 startGame();
             }
-            gameCombo.setEnabled(!gameStarted);
-            numberCombo.setEnabled(!gameStarted);
-            keyboardLayout.setEnabled(gameStarted);
-            twoPlayers = gameCombo.getValue().equals("Option1");
-            scoreNeeded = gameCombo.getValue().equals("Option1") && numberCombo.getValue().equals("Option1");
         });
     }
 
     private void stopGame() {
         startButton.setCaption("Start game");
-        gameStarted = false;gameCombo.setEnabled(!gameStarted);
-        numberCombo.setEnabled(!gameStarted);
-        keyboardLayout.setEnabled(gameStarted);
-        twoPlayers = gameCombo.getValue().equals("Option1");
-        scoreNeeded = gameCombo.getValue().equals("Option1") && numberCombo.getValue().equals("Option1");
-
+        gameStarted = false;
+        model.stop();
+        generalStartStopActions();
     }
 
     private void startGame() {
         startButton.setCaption("Stop game");
-        gameStarted = true;
         model.start();
+        gameStarted = true;
         isRobotMove = false;
         currentInputField = numberField;
         numberField.clear();
-        numberField.setEnabled(true);
         scoreField.clear();
-        scoreField.setEnabled(false);
         userArea.clear();
         robotArea.clear();
         infoArea.clear();
+        twoPlayers = gameCombo.getValue().equals("Option1");
+        scoreNeeded = gameCombo.getValue().equals("Option1") && numberCombo.getValue().equals("Option1");
+        generalStartStopActions();
+    }
+
+    private void generalStartStopActions(){
+        gameCombo.setEnabled(!gameStarted);
+        numberCombo.setEnabled(!gameStarted);
+        keyboardLayout.setEnabled(gameStarted);
+        scoreField.setEnabled(false);
+        numberField.setEnabled(gameStarted);
     }
 
     private void print(int[] data) {

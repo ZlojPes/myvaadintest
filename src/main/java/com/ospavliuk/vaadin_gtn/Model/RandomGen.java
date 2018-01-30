@@ -1,4 +1,4 @@
-package com.ospavliuk.myvaadintest.Model;
+package com.ospavliuk.vaadin_gtn.Model;
 
 public class RandomGen {
     public static int[] getRandom() {

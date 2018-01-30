@@ -6,8 +6,8 @@
 	<groupId>com.ospavliuk</groupId>
 	<artifactId>myvaadintest</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>myvaadintest</name>
+	<version>1.0.1</version>
+	<name>vaadin_gtn</name>
 
 	<prerequisites>
 		<maven>3</maven>
@@ -96,7 +96,7 @@
 					</execution>
 				</executions>
 			 <configuration>
-			  <runTarget>http://localhost:8080/myvaadintest</runTarget>
+			  <runTarget>http://localhost:8080/gtn</runTarget>
 			 </configuration>
 			</plugin>
 			<plugin>

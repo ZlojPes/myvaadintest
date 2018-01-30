@@ -1,8 +1,10 @@
-package com.ospavliuk.myvaadintest.Model;
+package com.ospavliuk.vaadin_gtn.Model;
 
-import com.ospavliuk.myvaadintest.Controller;
+import com.ospavliuk.vaadin_gtn.Controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ModelImpl implements Model {
     private Controller controller;
@@ -12,9 +14,11 @@ public class ModelImpl implements Model {
     private int[] currentRobotsMove;
     private Result result;
     private int userGlobalScore, robotGlobalScore;
+    private List<int[]> robotMovesList;
 
     public ModelImpl(Controller controller) {
         this.controller = controller;
+        robotMovesList = new ArrayList<>();
         result = Result.NO_WINNERS;
     }
 
@@ -68,9 +72,19 @@ public class ModelImpl implements Model {
     }
 
     @Override
+    public int[] getInventedNumber() {
+        return secretNumber;
+    }
+
+    @Override
     public int[] processRobotScore(int[] score) throws WrongScoreException {
         if (score[0] < 0) {
-            score = Score.getScore(secretNumber, mixer.getMix(currentRobotsMove));
+            int[] mixedMove = mixer.getMix(currentRobotsMove);
+            score = Score.getScore(secretNumber, mixedMove);
+            int[] toRobotList = new int[6];
+            System.arraycopy(mixedMove, 0, toRobotList, 0, 4);
+            System.arraycopy(score, 0, toRobotList, 4, 2);
+            robotMovesList.add(toRobotList);
         }
         int[] out = new int[6];
         System.arraycopy(currentRobotsMove, 0, out, 0, 4);
@@ -90,5 +104,10 @@ public class ModelImpl implements Model {
 
     public void userForfeit() {
         robotGlobalScore++;
+    }
+
+    @Override
+    public List<int[]> getRobotMovesList() {
+        return robotMovesList;
     }
 }

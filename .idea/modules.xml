@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/myvaadintest.iml" filepath="$PROJECT_DIR$/myvaadintest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vaadin_gtn.iml" filepath="$PROJECT_DIR$/vaadin_gtn.iml" />
     </modules>
   </component>
 </project>

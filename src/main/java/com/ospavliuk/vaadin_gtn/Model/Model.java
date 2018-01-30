@@ -1,4 +1,6 @@
-package com.ospavliuk.myvaadintest.Model;
+package com.ospavliuk.vaadin_gtn.Model;
+
+import java.util.List;
 
 public interface Model {
     void start();
@@ -9,6 +11,8 @@ public interface Model {
 
     int[] getRobotsMove() throws WrongScoreException;
 
+    List<int[]> getRobotMovesList();
+
     int[] processRobotScore(int[] score) throws WrongScoreException;
 
     int[] getGlobalScore();
@@ -16,4 +20,6 @@ public interface Model {
     Result checkWinners();
 
     void userForfeit();
+
+    int[] getInventedNumber();
 }

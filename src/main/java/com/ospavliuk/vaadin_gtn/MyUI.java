@@ -1,4 +1,4 @@
-package com.ospavliuk.myvaadintest;
+package com.ospavliuk.vaadin_gtn;
 
 import javax.servlet.annotation.WebServlet;
 

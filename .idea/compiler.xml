@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="myvaadintest" />
+        <module name="vaadin_gtn" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="myvaadintest" target="1.8" />
+      <module name="vaadin_gtn" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,6 +1,6 @@
 package com.ospavliuk.vaadin_gtn.Model;
 
-public class Mixer {
+class Mixer {
     private final int[] mixer;
 
     Mixer() {
@@ -13,7 +13,7 @@ public class Mixer {
         }
     }
 
-    public int[] getMix(int[] input) {
+    int[] getMix(int[] input) {
         int[] output = new int[input.length];
         for (int i = 0; i < output.length; i++)
             output[i] = mixer[input[i]];

@@ -2,7 +2,7 @@ package com.ospavliuk.vaadin_gtn.Model;
 
 import java.util.ArrayList;
 
-public class ArtInt {
+class ArtInt {
     private static final int[][] LEGAL_COMBINATIONS = new int[5040][];
     private final ArrayList<int[]> prevMoves = new ArrayList<>();
 
@@ -25,7 +25,7 @@ public class ArtInt {
         }
     }
 
-    public int[] nextMove() throws WrongScoreException {
+    int[] nextMove() throws WrongScoreException {
         int[] attempt = null;
         for (int[] current : LEGAL_COMBINATIONS) {
             if (matchToAllPrevious(current)) {
@@ -49,11 +49,7 @@ public class ArtInt {
         return true;
     }
 
-    public void writeToLog(int[] a) {
+    void writeToLog(int[] a) {
         prevMoves.add(a);
-    }
-
-    public ArrayList<int[]> getMovesList() {
-        return prevMoves;
     }
 }

@@ -1,13 +1,10 @@
 package com.ospavliuk.vaadin_gtn.Model;
 
-import com.ospavliuk.vaadin_gtn.Controller;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ModelImpl implements Model {
-    private Controller controller;
     private ArtInt artInt;
     private Mixer mixer;
     private int[] secretNumber;
@@ -16,8 +13,7 @@ public class ModelImpl implements Model {
     private int userGlobalScore, robotGlobalScore;
     private List<int[]> robotMovesList;
 
-    public ModelImpl(Controller controller) {
-        this.controller = controller;
+    public ModelImpl() {
         robotMovesList = new ArrayList<>();
         result = Result.NO_WINNERS;
     }

@@ -12,14 +12,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Controller extends MyUIDesigner {
+class Controller extends MyUIDesigner {
     private static int counter;
     private boolean gameStarted, scoreNeeded, twoPlayers, isRobotMove = true;
     private Model model;
     private TextField currentInputField;
 
     Controller() {
-        model = new ModelImpl(this);
+        model = new ModelImpl();
         System.out.println(++counter);
         initComponents();
     }
@@ -157,7 +157,7 @@ public class Controller extends MyUIDesigner {
                 infoArea.setValue("Unfortunately, you lose :( Invented number was " + num[0] + num[1] + num[2] + num[3] + ". Try again and good luck!");
         }
         if (!scoreNeeded) {
-            printVisebleRobotList();
+            printVisibleRobotList();
         }
         finishAndSetScore(model.getGlobalScore());
     }
@@ -198,7 +198,7 @@ public class Controller extends MyUIDesigner {
         numberField.setEnabled(gameStarted);
     }
 
-    private void printVisebleRobotList() {
+    private void printVisibleRobotList() {
         isRobotMove = true;
         robotArea.clear();
         for (int[] move : model.getRobotMovesList()) {

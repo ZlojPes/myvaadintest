@@ -14,7 +14,6 @@ public class ModelImpl implements Model {
     private List<int[]> robotMovesList;
 
     public ModelImpl() {
-        robotMovesList = new ArrayList<>();
         result = Result.NO_WINNERS;
     }
 
@@ -22,6 +21,7 @@ public class ModelImpl implements Model {
     public void start() {
         artInt = new ArtInt();
         mixer = new Mixer();
+        robotMovesList = new ArrayList<>();
         secretNumber = RandomGen.getRandom();
         System.out.println(Arrays.toString(secretNumber));
     }
